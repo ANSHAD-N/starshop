@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Models\Starship;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,24 +13,21 @@ class StarshipApiController extends AbstractController
     public function getCollections(): JsonResponse
     {
         $collections = [
-            [
-                'name' => 'Star',
-                'model' => 'LM_06_XC',
-                'captain' => 'Rofter Woolf',
-                'status' => 'Under taken by JK Rowling',
-            ],
-            [
-                'name' => 'Star',
-                'model' => 'LM_06_XC',
-                'captain' => 'Rofter Woolf',
-                'status' => 'Under taken by JK Rowling',
-            ],
-            [
-                'name' => 'Star',
-                'model' => 'LM_06_XC',
-                'captain' => 'Rofter Woolf',
-                'status' => 'Under taken by JK Rowling',
-            ]
+            new Starship(
+                'Star',
+                'LM_06_XC',
+                'Rofter Woolf',
+                'Under taken by JK Rowling',),
+            new Starship(
+                'Star',
+                'LM_06_XC',
+                'Rofter Woolf',
+                'Under taken by JK Rowling',),
+            new Starship(
+                'Star',
+                'LM_06_XC',
+                'Rofter Woolf',
+                'Under taken by JK Rowling',),
         ];
 
         return $this->json($collections);
