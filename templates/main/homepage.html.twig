@@ -9,10 +9,17 @@
 <P> Number of Star Ship {{ starshipCount }}</P>
 
 <table>
-    <tr>
-        <th> Name: </th>
-        <td>{{ myShip.name }}</td>
-    </tr>
+    {% for ship in myShip  %}
+        <tr>
+            <th> Name: </th>
+            <td>
+                <a href="{{ path('starship_show', {id: ship.id}) }}">
+                    {{ ship.name }}
+                </a>
+
+            </td>
+        </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}
