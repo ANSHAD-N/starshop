@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
 
 class StarshipRepository
 {
-    private function __construct(private LoggerInterface $logger)
+    public function __construct(private LoggerInterface $logger)
     {
     }
 
@@ -17,20 +17,36 @@ class StarshipRepository
 
         return [
             new Starship(
+                1,
                 'Star',
                 'LM_06_XC',
                 'Rofter Woolf',
                 'Under taken by JK Rowling', ),
             new Starship(
+                2,
                 'Star',
                 'LM_06_XC',
                 'Rofter Woolf',
                 'Under taken by JK Rowling', ),
             new Starship(
+                3,
                 'Star',
                 'LM_06_XC',
                 'Rofter Woolf',
                 'Under taken by JK Rowling', ),
         ];
+    }
+
+    public function findOne(int $id): ?Starship
+    {
+        $collection = $this->findAll();
+
+        foreach ($collection as $item) {
+            if ($item->getId() === $id) {
+                return $item;
+            }
+        }
+
+        return null;
     }
 }
